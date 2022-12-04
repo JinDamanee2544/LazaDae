@@ -1,24 +1,16 @@
-# README
+# LazaDae
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+E-Commerce Website based on Ruby on Rails
 
-Things you may want to cover:
+(Web Programming Final project)
 
-* Ruby version
+[![lazadae.png](https://i.postimg.cc/43r679Mc/lazadae.png)](https://postimg.cc/cKBgPrd1)
 
-* System dependencies
+## Requirement
 
-* Configuration
+- To be continued... [Docs](https://docs.google.com/document/d/1GNcIkdUtEU51gmP2jdqt8p7NghQ5iuij-_oV2wx9J9I/edit?usp=sharing)
 
-* Database creation
+## Tech Stack
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Ruby on Rails
+- Bootstrap 5 
