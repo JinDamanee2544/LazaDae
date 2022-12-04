@@ -8,7 +8,7 @@ E-Commerce Website based on Ruby on Rails
 
 ## Requirement
 
-- To be continued... [Docs](https://docs.google.com/document/d/1GNcIkdUtEU51gmP2jdqt8p7NghQ5iuij-_oV2wx9J9I/edit?usp=sharing)
+- [Google Sheet](https://docs.google.com/spreadsheets/d/1h0FCI-0peXFP2fA9byo6vj2-egiiXuUrp2wLumWaki8/edit?usp=sharing)
 
 ## Tech Stack
 
