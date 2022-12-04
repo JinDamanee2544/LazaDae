@@ -1,0 +1,12 @@
+<div class='d-flex justify-content-center align-items-center h-100 my-auto'>
+  <div class='p-4 shadow-lg rounded bg-white '>
+    <h1 class='font-weight-bold text-center'>Login</h1>
+    <%= form_with url:login_control_path ,class:'form d-flex flex-column' do |f| %>
+      <%= f.label :email ,class:'form-label'%>
+      <%= f.text_field :email ,class:'form-control'%>
+      <%= f.label :password ,class:'form-label' %>
+      <%= f.password_field :password ,class:'form-control'%>
+      <%= f.submit 'submit' ,class:'btn btn-primary mt-4'%>
+    <% end %>
+  </div>
+</div>
