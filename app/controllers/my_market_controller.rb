@@ -4,5 +4,6 @@ class MyMarketController < ApplicationController
 
     # For Buyer shopping their cart
     def index
+        @allSoldRecord = Market.all
     end
 end

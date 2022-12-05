@@ -4,9 +4,9 @@ import "controllers";
 
 $(document).ready(function() {
     $("#table").DataTable({
-        ordering: false,
+        // ordering: false,
         // paging: false,
-        info: false,
+        // info: false,
         // searching: false,
     });
 });

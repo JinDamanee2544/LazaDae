@@ -1,6 +1,8 @@
 <div class='container d-flex justify-content-center align-items-center'>
   <div class='p-4 shadow-lg rounded bg-white'>
-    <h1 class='text-center fw-bold p-5'>My Inventory</h1>
+    <h1 class='text-center fw-bold p-5'>
+      <%= @myUser.name %>'s Inventory
+    </h1>
     <% if (@soldRecord.empty?)%>
       <h1>No Item</h1>
     <% else %>
