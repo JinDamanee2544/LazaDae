@@ -7,7 +7,12 @@ class LoginController < ApplicationController
     u = User.where(email: params[:email]).first
     if(u && u.authenticate(params[:password]))
       session[:logged_in] = true
-      session[:user_id] = u.id
+      session[:current_user_id] = u.id
+
+      session[:is_admin] = u.user_type==0
+      session[:is_seller] = u.user_type==1
+      session[:is_buyer] = u.user_type==2
+
       redirect_to users_path
     else
       redirect_to login_path, notice: "Incorrect username or password"
