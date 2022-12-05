@@ -40,4 +40,12 @@ class ApplicationController < ActionController::Base
             redirect_to login_path , notice: "You must be a seller to access that."
         end
     end
+
+    def must_be_admin
+        if is_admin?
+            return true
+        else 
+            redirect_to login_path , notice: "You must be an admin to access that."
+        end
+    end
 end
