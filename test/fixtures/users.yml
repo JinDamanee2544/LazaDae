@@ -4,10 +4,10 @@ one:
   email: MyString
   name: MyString
   password_digest: MyString
-  user_type: MyString
+  user_type: 1
 
 two:
   email: MyString
   name: MyString
   password_digest: MyString
-  user_type: MyString
+  user_type: 1

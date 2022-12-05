@@ -1,7 +1,29 @@
-<div>
-  <% @soldRecord.each do |r| %>
-    <div>
-      <%= r.item.name %>
-    </div>
-  <%end%>
+<div class='container d-flex justify-content-center align-items-center'>
+  <div class='p-4 shadow-lg rounded bg-white'>
+    <h1 class='text-center fw-bold p-2'>My Inventory</h1>
+    <% if (@soldRecord.empty?)%>
+      <h1>No Item</h1>
+    <% else %>
+      <table class='table table-striped'>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @soldRecord.each do |r| %>
+            <tr>
+              <td> <%= r.item.name %> </td>
+              <td> <%= r.item.category %></td>
+              <td> <%= r.price %> </td>
+              <td> <%= r.stock %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <%end%>
+  </div>
 </div>

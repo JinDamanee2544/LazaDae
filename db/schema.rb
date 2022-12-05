@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_05_081142) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_05_114139) do
   create_table "inventories", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "item_id", null: false
     t.integer "seller_id", null: false
-    t.float "price"
-    t.decimal "qty"
+    t.decimal "price"
+    t.integer "qty"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_inventories_on_item_id"
@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_081142) do
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "category"
-    t.boolean "enable"
+    t.boolean "enable", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,8 +35,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_081142) do
   create_table "markets", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "item_id", null: false
-    t.float "price"
-    t.decimal "stock"
+    t.decimal "price"
+    t.integer "stock"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_markets_on_item_id"
@@ -47,14 +47,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_081142) do
     t.string "email"
     t.string "name"
     t.string "password_digest"
-    t.decimal "user_type"
+    t.integer "user_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "inventories", "items"
-  add_foreign_key "inventories", "sellers"
   add_foreign_key "inventories", "users"
+  add_foreign_key "inventories", "users", column: "seller_id"
   add_foreign_key "markets", "items"
   add_foreign_key "markets", "users"
 end

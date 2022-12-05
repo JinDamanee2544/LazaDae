@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :inventories
   resources :markets
-  get 'my_inventory/index'
   resources :items
   resources :users
+  get 'my_inventory/index'
 
   get 'login', to: 'login#index'
   post 'loginControl' , to: 'login#loginControl' , as: 'login_control'

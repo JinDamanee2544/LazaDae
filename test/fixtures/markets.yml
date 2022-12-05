@@ -3,11 +3,11 @@
 one:
   user: one
   item: one
-  price: 1.5
-  stock: 9.99
+  price: 9.99
+  stock: 1
 
 two:
   user: two
   item: two
-  price: 1.5
-  stock: 9.99
+  price: 9.99
+  stock: 1
