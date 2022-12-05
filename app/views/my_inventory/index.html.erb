@@ -7,6 +7,7 @@
       <table class='table table-striped'>
         <thead>
           <tr>
+            <th>Picture</th>
             <th>Name</th>
             <th>Category</th>
             <th>Price</th>
@@ -16,6 +17,13 @@
         <tbody>
           <% @soldRecord.each do |r| %>
             <tr>
+              <td>
+                <% if(r.item.picture.attached?)%>
+                  <%= image_tag r.item.picture.variant(:thumb) %>
+                <% else %>
+                  <p>No Picture</p>
+                <% end %>
+              </td>
               <td> <%= r.item.name %> </td>
               <td> <%= r.item.category %></td>
               <td> <%= r.price %> </td>

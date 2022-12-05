@@ -3,15 +3,16 @@
     <strong>Name:</strong>
     <%= item.name %>
   </p>
-
   <p>
     <strong>Category:</strong>
     <%= item.category %>
   </p>
-
   <p>
     <strong>Enable:</strong>
     <%= item.enable %>
   </p>
-
+  <% if(item.picture.attached?) %>
+    <strong>Picture:</strong>
+    <%= image_tag item.picture.variant(:thumb) %>
+  <%end%>
 </div>

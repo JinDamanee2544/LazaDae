@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
+  before_action :must_be_logged_in
+  before_action :must_be_admin
+
 
   # GET /items or /items.json
   def index
@@ -38,6 +41,9 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
+        if (!item_params[:picture].nil?)
+          @item.picture.attach(item_params[:picture])
+        end
         format.html { redirect_to item_url(@item), notice: "Item was successfully updated." }
         format.json { render :show, status: :ok, location: @item }
       else
@@ -65,6 +71,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:name, :category, :enable)
+      params.require(:item).permit(:name, :category, :enable,:picture)
     end
 end
