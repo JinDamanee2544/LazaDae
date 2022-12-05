@@ -1,10 +1,7 @@
 <p style="color: green"><%= notice %></p>
-
 <%= render @inventory %>
-
 <div>
-  <%= link_to "Edit this inventory", edit_inventory_path(@inventory) %> |
-  <%= link_to "Back to inventories", inventories_path %>
-
-  <%= button_to "Destroy this inventory", @inventory, method: :delete %>
+  <%= link_to "Edit this inventory", edit_inventory_path(@inventory) ,class:'btn btn-primary'%> |
+  <%= link_to "Back to inventories", inventories_path ,class:'btn btn-primary'%>
+  <%= button_to "Destroy this inventory", @inventory, method: :delete ,class:'btn btn-danger mt-4'%>
 </div>

@@ -1,10 +1,7 @@
 <h1>Editing market</h1>
-
 <%= render "form", market: @market %>
-
 <br>
-
 <div>
-  <%= link_to "Show this market", @market %> |
-  <%= link_to "Back to markets", markets_path %>
+  <%= link_to "Show this market", @market ,class:'btn btn-primary'%> |
+  <%= link_to "Back to markets", markets_path  ,class:'btn btn-primary' %>
 </div>

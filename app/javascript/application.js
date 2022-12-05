@@ -3,5 +3,10 @@ import "@hotwired/turbo-rails";
 import "controllers";
 
 $(document).ready(function() {
-    $("#table").DataTable();
+    $("#table").DataTable({
+        ordering: false,
+        // paging: false,
+        info: false,
+        // searching: false,
+    });
 });

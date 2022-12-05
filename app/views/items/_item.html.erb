@@ -1,4 +1,4 @@
-<div id="<%= dom_id item %>">
+<div id="<%= dom_id item %>" >
   <p>
     <strong>Name:</strong>
     <%= item.name %>
@@ -13,6 +13,8 @@
   </p>
   <% if(item.picture.attached?) %>
     <strong>Picture:</strong>
-    <%= image_tag item.picture.variant(:thumb) %>
+    <div>
+      <%= image_tag item.picture.variant(:thumb) %>
+    </div>
   <%end%>
 </div>
