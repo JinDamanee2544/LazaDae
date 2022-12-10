@@ -1,12 +1,12 @@
 <div class='container d-flex justify-content-center align-items-center'>
   <div class='p-4 shadow-lg rounded bg-white'>
     <h1 class='text-center fw-bold p-5'>
-      <%= @myUser.name %>'s Inventory
+      <%= @myUser.name %>'s Shop Inventory
     </h1>
     <% if (@soldRecord.empty?)%>
       <h1>No Item</h1>
     <% else %>
-      <table id="table" class='table table-striped table-hover '>
+      <table id="table" class="stripe" >
         <thead class='bg-dark text-light'>
           <tr>
             <th>Picture</th>

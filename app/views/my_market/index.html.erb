@@ -4,7 +4,7 @@
     <% if (@allSoldRecord.empty?)%>
       <h1>No Item</h1>
     <% else %>
-      <table id="table" class='table table-striped table-hover '>
+      <table id="table" class="stripe">
         <thead class='bg-dark text-light'>
           <tr>
             <th>Picture</th>
@@ -12,6 +12,8 @@
             <th>Category</th>
             <th>Price</th>
             <th>Stock</th>
+            <th>Seller</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -28,6 +30,15 @@
               <td> <%= r.item.category %></td>
               <td> <%= r.price %> </td>
               <td> <%= r.stock %> </td>
+              <td> <%= User.find(r.user_id).name %> </td>
+              <td>
+                <%= form_with url:my_market_buyItem_path,method: :post,class:'form-control d-flex gap-2' do |f| %>
+                  <%= f.number_field :amount ,required:true, value:1, class: 'form-control-sm' %>
+                  <%= f.hidden_field :item_id ,value: r.item.id %>
+                  <%= f.submit "Buy", class: "btn btn-primary" %>
+                  <%= f.label r.item.id%>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

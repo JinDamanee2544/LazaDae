@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   post 'login/destroy' , to: 'login#destroy' , as: 'login_destroy'
 
   get 'my_market', to: 'my_market#index' , as: 'my_market'
+  post 'my_market/buyItem' , to: 'my_market#BuyItem' , as: 'my_market_buyItem'
+
+
   get 'my_inventory', to: 'my_inventory#index' , as: 'my_inventory'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
