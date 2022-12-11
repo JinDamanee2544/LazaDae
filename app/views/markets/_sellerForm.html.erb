@@ -11,14 +11,15 @@
       </div>
     <% end %>
     <%= form.hidden_field :lock_version %>
-    <div>
-      <%= form.label :user_id, style: "display: block" ,class:'form-label'%>
-      <%= form.select :user_id, User.all.map { |u| [User.find(u.id).name,u.id] } ,{},{class:'form-control'}%>
-    </div>
-    <div>
-      <%= form.label :item_id, style: "display: block" ,class:'form-label'%>
-      <%= form.select :item_id, Item.all.map { |i| [Item.find(i.id).name,i.id] } ,{},{class:'form-control'}%>
-    </div>
+    <% if session[:role]=='seller' %>
+      <div>
+        <%= form.label :user_id, style: "display: block" ,class:'form-label'%>
+        <%= form.select :user_id, [[User.find(session[:current_user_id]).name,session[:current_user_id]]] ,{},{class:'form-control'}%>
+      </div>
+      <div>
+        <%= form.label :item_id, style: "display: block" ,class:'form-label'%>
+      </div>
+    <%end%>
     <div>
       <%= form.label :price, style: "display: block" ,class:'form-label'%>
       <%= form.text_field :price ,class:'form-control'%>

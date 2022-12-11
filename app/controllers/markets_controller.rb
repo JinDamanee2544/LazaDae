@@ -1,7 +1,7 @@
 class MarketsController < ApplicationController
   before_action :set_market, only: %i[ show edit update destroy ]
   before_action :must_be_log_in
-  before_action :must_be_admin
+  # before_action :must_be_admin
   
   # GET /markets or /markets.json
   def index
@@ -67,6 +67,6 @@ class MarketsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def market_params
-      params.require(:market).permit(:user_id, :item_id, :price, :stock)
+      params.require(:market).permit(:user_id, :item_id, :price, :stock,:lock_version)
     end
 end

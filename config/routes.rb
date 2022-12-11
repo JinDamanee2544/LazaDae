@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sale_history/index'
+  get 'purchase_history/index'
   resources :inventories
   resources :markets
   resources :items
@@ -13,9 +15,12 @@ Rails.application.routes.draw do
   get 'my_market', to: 'my_market#index' , as: 'my_market'
   post 'my_market/buyItem' , to: 'my_market#BuyItem' , as: 'my_market_buyItem'
 
-
   get 'my_inventory', to: 'my_inventory#index' , as: 'my_inventory'
 
+  get 'purchase_history', to: 'purchase_history#index' , as: 'purchase_history'
+
+  get 'sale_history', to: 'sale_history#index' , as: 'sale_history'
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

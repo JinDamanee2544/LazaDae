@@ -1,23 +1,23 @@
 <div class='container d-flex justify-content-center align-items-center'>
   <div class='p-4 shadow-lg rounded bg-white'>
-    <h1 class='text-center fw-bold p-5'>Market</h1>
-    <% if (@allSoldRecord.empty?)%>
+    <h1 class='text-center fw-bold p-5'>
+      <%= @myUser.name %>'s Purchase History
+    </h1>
+    <% if (@buyhistory.empty?)%>
       <h1>No Item</h1>
     <% else %>
-      <table id="table" class="stripe">
+      <table id="table" class="stripe" >
         <thead class='bg-dark text-light'>
           <tr>
             <th>Picture</th>
             <th>Name</th>
             <th>Category</th>
             <th>Price</th>
-            <th>Stock</th>
-            <th>Seller</th>
-            <th>Action</th>
+            <th>Amount</th>
           </tr>
         </thead>
         <tbody>
-          <% @allSoldRecord.each do |r| %>
+          <% @buyhistory.each do |r| %>
             <tr>
               <td>
                 <% if(r.item.picture.attached?)%>
@@ -29,16 +29,7 @@
               <td> <%= r.item.name %> </td>
               <td> <%= r.item.category %></td>
               <td> <%= r.price %> </td>
-              <td> <%= r.stock %> </td>
-              <td> <%= User.find(r.user_id).name %> </td>
-              <td>
-                <%= form_with url:my_market_buyItem_path,method: :post,class:'form-control d-flex gap-2' do |f| %>
-                  <%= f.number_field :amount ,required:true, value:1, class: 'form-control-sm' %>
-                  <%= f.hidden_field :item_id ,value: r.item.id %>
-                  <%= f.submit "Buy", class: "btn btn-primary" %>
-                  <%= f.label r.item.id%>
-                <% end %>
-              </td>
+              <td> <%= r.qty %> </td>
             </tr>
           <% end %>
         </tbody>

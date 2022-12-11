@@ -15,10 +15,16 @@ class LoginController < ApplicationController
     if(u && u.authenticate(params[:password]))
       session[:logged_in] = true
       session[:current_user_id] = u.id
-
-      session[:is_admin] = u.user_type==0
-      session[:is_seller] = u.user_type==1
-      session[:is_buyer] = u.user_type==2
+      
+      case u.user_type
+      when 0
+        session[:role] = 'admin'
+      when 1
+        session[:role] = 'seller'
+      when 2
+        session[:role] = 'buyer'
+      end
+      
 
       redirect_to my_market_path
     else

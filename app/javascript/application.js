@@ -2,11 +2,11 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 
-$(document).ready(function() {
-    $("#table").DataTable({
-        // ordering: false,
-        // paging: false,
-        // info: false,
-        // searching: false,
-    });
-});
+// $(document).ready(function() {
+//     $("#table").DataTable({
+//         // ordering: false,
+//         // paging: false,
+//         // info: false,
+//         // searching: false,
+//     });
+// });

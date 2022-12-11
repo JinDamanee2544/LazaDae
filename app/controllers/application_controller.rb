@@ -3,20 +3,19 @@ class ApplicationController < ActionController::Base
     def is_login?
         return session[:logged_in] == true
     end
-    
+    # ---------------------------------------------------------------- #
     def is_admin?
-        return session[:is_admin] == true
+        return session[:role] == 'admin'
     end
     
     def is_seller?
-        return session[:is_seller] == true
+        return session[:role] == 'seller'
     end
 
     def is_buyer?
-        return session[:is_buyer] == true
+        return session[:role] == 'buyer'
     end
-
-
+    # ---------------------------------------------------------------- #
     def must_be_log_in
         if is_login?
             return true

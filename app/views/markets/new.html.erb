@@ -1,5 +1,7 @@
 <%= render "form", market: @market %>
 <br>
-<div>
-  <%= link_to "Back to markets", markets_path ,class:'btn btn-primary'%>
-</div>
+<% if session[:role]=='admin' %>
+  <div>
+    <%= link_to "Back to markets", markets_path ,class:'btn btn-primary'%>
+  </div>
+<%end%>

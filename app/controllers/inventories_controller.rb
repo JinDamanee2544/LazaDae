@@ -1,7 +1,7 @@
 class InventoriesController < ApplicationController
   before_action :set_inventory, only: %i[ show edit update destroy ]
   before_action :must_be_log_in
-  before_action :must_be_admin
+  # before_action :must_be_admin  
   
   # GET /inventories or /inventories.json
   def index
@@ -67,6 +67,6 @@ class InventoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def inventory_params
-      params.require(:inventory).permit(:user_id, :item_id, :seller_id, :price, :qty)
+      params.require(:inventory).permit(:user_id, :item_id, :seller_id, :price, :qty,:lock_version)
     end
 end

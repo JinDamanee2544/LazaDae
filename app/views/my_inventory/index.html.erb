@@ -4,7 +4,7 @@
       <%= @myUser.name %>'s Shop Inventory
     </h1>
     <% if (@soldRecord.empty?)%>
-      <h1>No Item</h1>
+      <h1 class='text-center'>No Item</h1>
     <% else %>
       <table id="table" class="stripe" >
         <thead class='bg-dark text-light'>
@@ -14,6 +14,8 @@
             <th>Category</th>
             <th>Price</th>
             <th>Stock</th>
+            <th>Status</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -30,10 +32,31 @@
               <td> <%= r.item.category %></td>
               <td> <%= r.price %> </td>
               <td> <%= r.stock %> </td>
+              <td>
+                <% if Item.find(r.item_id).enable? %>
+                  <p class='text-success'>Enable</p>
+                <% else %>
+                  <p class='text-danger'>Disable</p>
+                <% end %>
+              </td>
+              <td>
+                <%= form_with url:my_market_buyItem_path,method: :post,class:'form-control d-flex gap-2' do |f| %>
+                  <%= f.number_field :amount ,required:true, value:1, class: 'form-control-sm' %>
+                  <%= f.hidden_field :item_id ,value: r.item.id %>
+                  <%= f.submit "Buy", class: "btn btn-primary" %>
+                  <%= f.label r.item.id%>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
       </table>
     <%end%>
+    <%= link_to 'Add Item to Market', new_market_path ,class:'btn btn-success'%>
   </div>
 </div>
+<script>
+  $(document).ready(function() {
+    $("#table").DataTable();
+  });
+</script>
