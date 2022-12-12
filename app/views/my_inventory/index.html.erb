@@ -40,8 +40,12 @@
                 <% end %>
               </td>
               <td>
-                <%= link_to 'Edit', edit_market_path(r.id), class:'btn btn-primary' %>
-                <%= link_to 'Delete', market_path(r.id), method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
+                  Edit
+                </button>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                  Delete
+                </button>
               </td>
             </tr>
           <% end %>
@@ -49,11 +53,11 @@
       </table>
     <%end%>
     <%# <%= link_to 'Add Item to Market', new_market_path ,class:'btn btn-success'%>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
       Add Item to Market
     </button>
   </div>
-  <%= render '/my_inventory/modal'%>
+  <%= render '/my_inventory/addModal'%>
 </main>
 <script>
   $(document).ready(function() {

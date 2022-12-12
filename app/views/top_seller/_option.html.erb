@@ -1,0 +1,12 @@
+<%= form_with url:'',method: :get,class:'d-flex gap-2 flex-column' do |f| %>
+  <%= f.select :metric , ["Sold Item","Revenue"] ,{},{class:'form-control'}%>
+  <div class="form-group">
+    <%= f.label :start_date%>
+    <%= f.date_field :start_date ,required:true,class:'form-control'%>
+  </div>
+  <div class="form-group">
+    <%= f.label :end_date%>
+    <%= f.date_field :end_date ,required:true,class:'form-control'%>
+  </div>
+  <%= f.submit "Submit",class:'btn btn-primary'%>
+<%end%>

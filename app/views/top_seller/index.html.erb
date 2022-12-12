@@ -1,0 +1,32 @@
+<div class='container d-flex justify-content-center align-items-center'>
+  <main class='p-4 shadow-lg rounded bg-white'>
+    <div class='d-flex flex-row'>
+      <div>
+        <h1 class='text-center fw-bold p-5'>Top Seller</h1>
+        <%= render 'top_seller/option'%>
+      </div>
+      <div class='p-4'>
+        <% if not @top_seller_item.nil? %>
+          <div  class='text-center mb-4'>
+            <h4> Sorted by Sold Item  </h4>
+            <label>
+              For <%= @start_date%> - <%= @end_date %>
+            </label>
+          </div>
+          <%= render 'top_seller/topItem'%>
+        <% end %>
+        <% if not @top_seller_price.nil? %>
+          <div  class='text-center mb-4'>
+            <h4> Sorted by Revenue </h4>
+            <label>
+              For <%= @start_date%> - <%= @end_date %>
+            </div>
+            <%= render 'top_seller/topPrice'%>
+          </label>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+</div>

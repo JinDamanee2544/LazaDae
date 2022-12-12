@@ -10,27 +10,28 @@ class MyMarketController < ApplicationController
                 @onlyEnableItemInMarket.push(record)
             end
         end
-        puts "----------#{@onlyEnableItemInMarket}----------"
     end
 
-    def BuyItem
-        @BuyMarketItem = Market.find(params[:item_id])
-        stock = @BuyMarketItem.stock
-        @amount = params[:amount]
+    def buyItem
+        buyMarketItem = Market.find_by(item_id:params[:item_id])
+        stock = buyMarketItem.stock
+        amount = params[:amount]
         puts "------------------------"
-        puts "#{User.find(session[:current_user_id]).name} bought #{@amount} of #{@BuyMarketItem.item.name}"
+        puts "#{User.find(session[:current_user_id]).name} bought #{amount} of #{buyMarketItem.item.name}"
         puts "------------------------"
-        if(stock>1)
+        if(stock>0)
             @userInventory = Inventory.create(
                 user_id: session[:current_user_id],
-                item_id: @BuyMarketItem.item_id,
-                seller_id: @BuyMarketItem.user_id,
-                price: @BuyMarketItem.price,
-                qty: @amount
+                item_id: buyMarketItem.item_id,
+                seller_id: buyMarketItem.user_id,
+                price: buyMarketItem.price,
+                qty: amount
             )
-            @BuyMarketItem.update(stock: @BuyMarketItem.stock-1)
+            buyMarketItem.update(stock: buyMarketItem.stock-1)
+            redirect_to my_market_path
+        else
+            redirect_to my_market_path , notice: "Out of Stock"
         end
 
-        redirect_to my_market_path
     end
 end

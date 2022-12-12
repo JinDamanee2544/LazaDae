@@ -1,0 +1,25 @@
+<% if (@top_seller_price.empty?)%>
+  <h1 class='text-center'>No Item</h1>
+<% else %>
+  <table id="tablePrice" class="stripe">
+    <thead class='bg-dark text-light'>
+      <tr>
+        <th>Name</th>
+        <th>Revenue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @top_seller_price.each do |t| %>
+        <tr>
+          <td> <%= User.find(t.seller_id).name %> </td>
+          <td> <%= t.criteria %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%end%>
+<script>
+  $(document).ready(function() {
+    $("#tablePrice").DataTable();
+  });
+</script>

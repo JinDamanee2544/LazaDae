@@ -14,6 +14,7 @@
             <th>Category</th>
             <th>Price</th>
             <th>Amount</th>
+            <th>Buyer</th>
           </tr>
         </thead>
         <tbody>
@@ -30,6 +31,7 @@
               <td> <%= r.item.category %></td>
               <td> <%= r.price %> </td>
               <td> <%= r.qty %> </td>
+              <td> <%= User.find(r.user_id).name %> </td>
             </tr>
           <% end %>
         </tbody>
