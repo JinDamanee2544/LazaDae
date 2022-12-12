@@ -1,0 +1,21 @@
+<div class='container d-flex justify-content-center align-items-center'>
+  <main class='p-4 shadow-lg rounded bg-white'>
+    <h1 class='text-center fw-bold p-5'>Profile</h1>
+    <%= render '/profile/detail'%>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#changePassword" aria-expanded="false" aria-controls="collapseExample">
+      Change Password
+    </button>
+    <div class="collapse" id="changePassword">
+      <%= form_with url:profile_changePassword_path,method: :post,class:'form-control mt-4' do |f| %>
+        <%= f.hidden_field :lock_version %>
+        <%= f.label :old_password %>
+        <%= f.password_field :old_password,required:true, class: 'form-control my-1' %>
+        <%= f.label :new_password %>
+        <%= f.password_field :new_password,required:true, class: 'form-control my-1' %>
+        <%= f.label :confirm_password %>
+        <%= f.password_field :confirm_password,required:true, class: 'form-control my-1' %>
+        <%= f.submit "Change", class: "btn btn-danger mt-2" %>
+      <%end%>
+    </div>
+  </main>
+</div>
