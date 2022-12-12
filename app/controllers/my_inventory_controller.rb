@@ -9,4 +9,6 @@ class MyInventoryController < ApplicationController
     @soldRecord = User.find(session[:current_user_id]).markets
   end
 
+  def addItem
+  end
 end

@@ -7,7 +7,7 @@
     </button>
     <div class="collapse" id="changePassword">
       <%= form_with url:profile_changePassword_path,method: :post,class:'form-control mt-4' do |f| %>
-        <%= f.hidden_field :lock_version %>
+        <%= f.hidden_field :lock_version , value: @user.lock_version %>
         <%= f.label :old_password %>
         <%= f.password_field :old_password,required:true, class: 'form-control my-1' %>
         <%= f.label :new_password %>

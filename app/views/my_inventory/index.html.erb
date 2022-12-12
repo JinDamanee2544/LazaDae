@@ -1,4 +1,4 @@
-<div class='container d-flex justify-content-center align-items-center'>
+<main class='container d-flex justify-content-center align-items-center'>
   <div class='p-4 shadow-lg rounded bg-white'>
     <h1 class='text-center fw-bold p-5'>
       <%= @myUser.name %>'s Shop Inventory
@@ -40,21 +40,21 @@
                 <% end %>
               </td>
               <td>
-                <%= form_with url:my_market_buyItem_path,method: :post,class:'form-control d-flex gap-2' do |f| %>
-                  <%= f.number_field :amount ,required:true, value:1, class: 'form-control-sm' %>
-                  <%= f.hidden_field :item_id ,value: r.item.id %>
-                  <%= f.submit "Buy", class: "btn btn-primary" %>
-                  <%= f.label r.item.id%>
-                <% end %>
+                <%= link_to 'Edit', edit_market_path(r.id), class:'btn btn-primary' %>
+                <%= link_to 'Delete', market_path(r.id), method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %>
               </td>
             </tr>
           <% end %>
         </tbody>
       </table>
     <%end%>
-    <%= link_to 'Add Item to Market', new_market_path ,class:'btn btn-success'%>
+    <%# <%= link_to 'Add Item to Market', new_market_path ,class:'btn btn-success'%>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Add Item to Market
+    </button>
   </div>
-</div>
+  <%= render '/my_inventory/modal'%>
+</main>
 <script>
   $(document).ready(function() {
     $("#table").DataTable();

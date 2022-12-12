@@ -16,7 +16,8 @@ class ProfileController < ApplicationController
     elsif(new_password != confirm_password)
       redirect_to profile_path, notice: "New password and confirm password do not match"
     else
-      user.update(password: new_password)
+      user.update(password: new_password,lock_version: user.lock_version)
+      reset_session
       redirect_to login_path, notice: "Password changed successfully"
     end
   end

@@ -1,0 +1,38 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Item to Market</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_with url:'',method: :post,class:'d-flex gap-4 flex-column' do |f| %>
+          <%= f.hidden_field :lock_version %>
+          <div class="form-group">
+            <%= f.label :item_name, 'Item Name'  %>
+            <%= f.number_field :item_name, class:'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :item_category, 'Item Category'  %>
+            <%= f.number_field :item_category, class:'form-control' %>
+          </div>
+          <div>
+            <%= f.label :picture, style: "display: block" %>
+            <%= f.file_field :picture %>
+          </div>
+          <div class="form-group">
+            <%= f.label :price, 'Price'  %>
+            <%= f.number_field :price, class:'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :stock, 'Stock'  %>
+            <%= f.number_field :stock, class:'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.submit 'Add',class:'btn btn-primary' %>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
