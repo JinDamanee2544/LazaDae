@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post 'my_market/buyItem' , to: 'my_market#BuyItem' , as: 'my_market_buyItem'
 
   get 'my_inventory', to: 'my_inventory#index' , as: 'my_inventory'
-  post 'my_inventory/addItem' , to: 'my_inventory#addItem' , as: 'my_inventory_addItem'
+  post 'my_inventory/add_item' , to: 'my_inventory#add_item' , as: 'my_inventory_add_item'
 
   get 'purchase_history', to: 'purchase_history#index' , as: 'purchase_history'
 

@@ -6,27 +6,27 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <%= form_with url:'',method: :post,class:'d-flex gap-4 flex-column' do |f| %>
+        <%= form_with url:my_inventory_add_item_path,method: :post,class:'d-flex gap-4 flex-column' do |f| %>
           <%= f.hidden_field :lock_version %>
           <div class="form-group">
             <%= f.label :item_name, 'Item Name'  %>
-            <%= f.number_field :item_name, class:'form-control' %>
+            <%= f.text_field :item_name,required:true, class:'form-control' %>
           </div>
           <div class="form-group">
             <%= f.label :item_category, 'Item Category'  %>
-            <%= f.number_field :item_category, class:'form-control' %>
+            <%= f.text_field :item_category,required:true, class:'form-control' %>
           </div>
           <div>
-            <%= f.label :picture, style: "display: block" %>
-            <%= f.file_field :picture %>
+            <%= f.label :item_picture, style: "display: block" %>
+            <%= f.file_field :item_picture %>
           </div>
           <div class="form-group">
             <%= f.label :price, 'Price'  %>
-            <%= f.number_field :price, class:'form-control' %>
+            <%= f.number_field :price,required:true, class:'form-control' %>
           </div>
           <div class="form-group">
             <%= f.label :stock, 'Stock'  %>
-            <%= f.number_field :stock, class:'form-control' %>
+            <%= f.number_field :stock,required:true, class:'form-control' %>
           </div>
           <div class="form-group">
             <%= f.submit 'Add',class:'btn btn-primary' %>

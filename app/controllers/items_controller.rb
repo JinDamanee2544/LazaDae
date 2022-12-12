@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
   before_action :must_be_log_in
-  # before_action :must_be_admin
+  before_action :must_be_admin
 
 
   # GET /items or /items.json

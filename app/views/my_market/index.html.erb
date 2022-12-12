@@ -1,7 +1,7 @@
 <div class='container d-flex justify-content-center align-items-center'>
   <div class='p-4 shadow-lg rounded bg-white'>
     <h1 class='text-center fw-bold p-5'>Market</h1>
-    <% if (@allSoldRecord.empty?)%>
+    <% if (@onlyEnableItemInMarket.empty?)%>
       <h1 class='text-center'>No Item</h1>
     <% else %>
       <table id="table" class="stripe">
@@ -17,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @allSoldRecord.each do |r| %>
+          <% @onlyEnableItemInMarket.each do |r| %>
             <tr>
               <td>
                 <% if(r.item.picture.attached?)%>

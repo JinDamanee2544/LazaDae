@@ -4,7 +4,13 @@ class MyMarketController < ApplicationController
 
     # For Buyer shopping their cart
     def index
-        @allSoldRecord = Market.all
+        @onlyEnableItemInMarket = []
+        Market.all.each do |record|
+            if(record.item.enable)
+                @onlyEnableItemInMarket.push(record)
+            end
+        end
+        puts "----------#{@onlyEnableItemInMarket}----------"
     end
 
     def BuyItem
