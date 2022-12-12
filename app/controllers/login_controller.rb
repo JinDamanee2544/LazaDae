@@ -19,21 +19,23 @@ class LoginController < ApplicationController
       case u.user_type
       when 0
         session[:role] = 'admin'
+        redirect_to my_market_path
       when 1
         session[:role] = 'seller'
+        redirect_to my_inventory_path
       when 2
         session[:role] = 'buyer'
+        redirect_to my_market_path
       end
       
-
-      redirect_to my_market_path
     else
       redirect_to login_path, notice: "Incorrect username or password"
     end
   end
 
-  def destroy
+  def logout
     reset_session
+    redirect_to login_path
   end
 
 end

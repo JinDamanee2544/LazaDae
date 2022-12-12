@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   # get 'my_inventory', to: 'my_inventory#index' , as: 'inventory_pages'
   # get 'my_market', to: 'my_market#index' , as: 'market_pages'
 
-  get 'login', to: 'login#index'
+  get 'login', to: 'login#index' , as: 'login'
   post 'login/control' , to: 'login#loginControl' , as: 'login_control'
-  post 'login/destroy' , to: 'login#destroy' , as: 'login_destroy'
+  post 'logout' , to: 'login#logout' , as: 'logout'
 
   get 'my_market', to: 'my_market#index' , as: 'my_market'
   post 'my_market/buyItem' , to: 'my_market#BuyItem' , as: 'my_market_buyItem'

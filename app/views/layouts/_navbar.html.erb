@@ -1,19 +1,63 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid d-flex gap-4">
-    <img src="/lazadae.png" height='36' alt="logo">
-    <a class="navbar-brand fw-bold text-white" href="#">Lazadae</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <div class="container justify-content-between">
+    <div class='container-fluid d-flex'>
+      <a class="navbar-brand fw-bold text-white d-flex gap-4" href="">
+        <img src="/lazadae.png" height='36' alt="logo">
+        Lazadae
+      </a>
+      <%# <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    </button> %>
+      <%# <div class="collapse navbar-collapse" id="navbarNav"> %>
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link text-light" href="/my_inventory">Inventory</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="/my_market">Market</a>
-        </li>
+        <% if session[:role]=='buyer' or session[:role]=='admin'%>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="/my_market">Market</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="/purchase_history">Purchase History</a>
+          </li>
+        <%end%>
+        <% if session[:role]=='seller' or session[:role]=='admin'%>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="/my_inventory">Inventory</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="/sale_history">Sale History</a>
+          </li>
+        <%end%>
+        <% if session[:role]=='admin'%>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Scaffold
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/users">User</a></li>
+              <li><a class="dropdown-item" href="/items">Item</a></li>
+              <li><a class="dropdown-item" href="/markets">Market</a></li>
+              <li><a class="dropdown-item" href="/inventories">Inventory</a></li>
+            </ul>
+          </li>
+        <%end%>
       </ul>
+      <%# </div> %>
     </div>
-  </div>
-</nav>
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <% if session[:current_user_id] %>
+            <%= User.find(session[:current_user_id]).name%>
+          <% else %>
+            Guest
+          <% end %>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/profile">Profile</a></li>
+          <li>
+            <%= button_to "Logout",logout_path ,method: :post ,class:'dropdown-item btn btn-link'%>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <img src="/user.png" height='36' alt="logo" class='mx-2'>
+  </nav>
