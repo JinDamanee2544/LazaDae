@@ -9,6 +9,7 @@ class MyInventoryController < ApplicationController
     @soldRecord = User.find(session[:current_user_id]).markets
   end
 
+  # For Seller adding new items
   def add_item
     user = User.find(session[:current_user_id])
     lock_version = params[:lock_version]
@@ -18,8 +19,6 @@ class MyInventoryController < ApplicationController
     
     price = params[:price]
     stock = params[:stock]
-
-    puts '------------------ TEST ------------------'
 
     item = Item.create(
       name: item_name,
@@ -38,6 +37,16 @@ class MyInventoryController < ApplicationController
       stock: stock,
       lock_version: lock_version
     )
-    redirect_to my_inventory_path , notice: "Item was successfully created."
+    redirect_to my_inventory_path , notice: "Your item has been send to Market, Please wait for Admin to approve this :)"
+  end
+
+  def delete_item 
+    market_id = params[:market_id]
+    market = Market.find(market_id)
+    market.destroy
+    # No Delete Item, We needed to keep the record of sold items
+    # item = Item.find(market.item_id)
+    # item.destroy
+    redirect_to my_inventory_path , notice: "Your item has been removed from Market"
   end
 end

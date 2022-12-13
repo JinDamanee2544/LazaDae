@@ -3,6 +3,20 @@ class ItemsController < ApplicationController
   before_action :must_be_log_in
   before_action :must_be_admin
 
+  def delete_unused_item
+    # Delete all unused item that do not appear in any inventory
+    # This is for Admin to clean up the database
+
+    puts '--------------------------------------------'
+    
+    Item.all.each do |item|
+      if item.inventories.empty? and item.markets.empty?
+        puts "Delete #{item}"
+        item.destroy
+      end
+    end
+    redirect_to items_path , notice: "Unused Item has been removed"
+  end
 
   # GET /items or /items.json
   def index

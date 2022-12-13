@@ -19,33 +19,31 @@
           </tr>
         </thead>
         <tbody>
-          <% @soldRecord.each do |r| %>
+          <% @soldRecord.each do |m| %>
             <tr>
               <td>
-                <% if(r.item.picture.attached?)%>
-                  <%= image_tag r.item.picture.variant(:thumb) %>
+                <% if(m.item.picture.attached?)%>
+                  <%= image_tag m.item.picture.variant(:thumb) %>
                 <% else %>
                   <p>No Picture</p>
                 <% end %>
               </td>
-              <td> <%= r.item.name %> </td>
-              <td> <%= r.item.category %></td>
-              <td> <%= r.price %> </td>
-              <td> <%= r.stock %> </td>
+              <td> <%= m.item.name %> </td>
+              <td> <%= m.item.category %></td>
+              <td> <%= m.price %> </td>
+              <td> <%= m.stock %> </td>
               <td>
-                <% if Item.find(r.item_id).enable? %>
+                <% if Item.find(m.item_id).enable? %>
                   <p class='text-success'>Enable</p>
                 <% else %>
                   <p class='text-danger'>Disable</p>
                 <% end %>
               </td>
               <td>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
-                  Edit
-                </button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                  Delete
-                </button>
+                <div class='d-flex gap-2 align-items-center'>
+                  <%= link_to 'Edit', edit_market_path(m.id), class:'btn btn-primary' %>
+                  <%= button_to 'Delete', my_inventory_delete_item_path(market_id:m.id), method: :post,form: {data: {turbo_confirm: 'Are you sure?'}}, class:'btn btn-danger' %>
+                </div>
               </td>
             </tr>
           <% end %>

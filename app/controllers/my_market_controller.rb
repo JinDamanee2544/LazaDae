@@ -12,6 +12,7 @@ class MyMarketController < ApplicationController
         end
     end
 
+    # For Buyer buying items
     def buyItem
         buyMarketItem = Market.find_by(item_id:params[:item_id])
         stock = buyMarketItem.stock
@@ -28,7 +29,7 @@ class MyMarketController < ApplicationController
                 qty: amount
             )
             buyMarketItem.update(stock: buyMarketItem.stock-1)
-            redirect_to my_market_path
+            redirect_to my_market_path , notice: "You Bought #{Item.find(params[:item_id]).name} for #{amount}"
         else
             redirect_to my_market_path , notice: "Out of Stock"
         end

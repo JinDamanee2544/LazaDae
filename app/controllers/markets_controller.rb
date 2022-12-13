@@ -1,7 +1,8 @@
 class MarketsController < ApplicationController
   before_action :set_market, only: %i[ show edit update destroy ]
   before_action :must_be_log_in
-  before_action :must_be_admin
+  before_action :must_be_admin , except: %i[ edit update ]
+  before_action :must_be_seller
   
   # GET /markets or /markets.json
   def index
@@ -19,6 +20,9 @@ class MarketsController < ApplicationController
 
   # GET /markets/1/edit
   def edit
+    if(@market.user_id != session[:current_user_id])
+      return redirect_to login_path, notice: "You are not allowed to edit this item."
+    end
   end
 
   # POST /markets or /markets.json
@@ -38,10 +42,18 @@ class MarketsController < ApplicationController
 
   # PATCH/PUT /markets/1 or /markets/1.json
   def update
+    if(@market.user_id != session[:current_user_id])
+      return redirect_to login_path, notice: "You are not allowed to edit this item."
+    end
     respond_to do |format|
       if @market.update(market_params)
-        format.html { redirect_to market_url(@market), notice: "Market was successfully updated." }
-        format.json { render :show, status: :ok, location: @market }
+        if(session[:role]=="seller")
+          format.html { redirect_to my_inventory_path, notice: "Your item on Market was successfully updated." }
+          format.json { render :show, status: :ok, location: @market }
+        else
+          format.html { redirect_to market_url(@market), notice: "Market was successfully updated." }
+          format.json { render :show, status: :ok, location: @market }
+        end
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @market.errors, status: :unprocessable_entity }
@@ -54,8 +66,14 @@ class MarketsController < ApplicationController
     @market.destroy
 
     respond_to do |format|
-      format.html { redirect_to markets_url, notice: "Market was successfully destroyed." }
-      format.json { head :no_content }
+      # For Seller deleting their sold items, Navigate back to his own inventory
+      # if(session[:role]=="seller")
+      #   format.html { redirect_to my_inventory_path, notice: "Your item on Market was successfully destroyed." }
+      #   format.json { head :no_content }
+      # else
+        format.html { redirect_to markets_url, notice: "Market was successfully destroyed." }
+        format.json { head :no_content }
+      # end
     end
   end
 

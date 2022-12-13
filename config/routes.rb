@@ -1,15 +1,11 @@
 Rails.application.routes.draw do
-  get 'top_seller/index'
-  get 'profile/index'
-  get 'sale_history/index'
-  get 'purchase_history/index'
   resources :inventories
   resources :markets
   resources :items
   resources :users
-  # get 'my_inventory', to: 'my_inventory#index' , as: 'inventory_pages'
-  # get 'my_market', to: 'my_market#index' , as: 'market_pages'
 
+  post 'delete_unused_item' , to: 'items#delete_unused_item' , as: 'delete_unused_item'
+  
   get 'login', to: 'login#index' , as: 'login'
   post 'login/control' , to: 'login#loginControl' , as: 'login_control'
   post 'logout' , to: 'login#logout' , as: 'logout'
@@ -19,6 +15,7 @@ Rails.application.routes.draw do
 
   get 'my_inventory', to: 'my_inventory#index' , as: 'my_inventory'
   post 'my_inventory/add_item' , to: 'my_inventory#add_item' , as: 'my_inventory_add_item'
+  post 'my_inventory/delete_item' , to: 'my_inventory#delete_item' , as: 'my_inventory_delete_item'
 
   get 'purchase_history', to: 'purchase_history#index' , as: 'purchase_history'
 
