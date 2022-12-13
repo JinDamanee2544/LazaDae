@@ -2,7 +2,10 @@ require "test_helper"
 
 class MarketsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @market = markets(:one)
+    @market = markets(:market1)
+    email = 'admin@gmail.com'
+    password = 'admin'
+    post login_control_path, params: { email: email, password: password }
   end
 
   test "should get index" do

@@ -2,7 +2,10 @@ require "test_helper"
 
 class ItemsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @item = items(:one)
+    @item = items(:water)
+    email = 'admin@gmail.com'
+    password = 'admin'
+    post login_control_path, params: { email: email, password: password }
   end
 
   test "should get index" do
@@ -39,10 +42,12 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy item" do
-    assert_difference("Item.count", -1) do
+    # assert_difference("Item.count", -1) do
+    #   delete item_url(@item)
+    # end
+    # assert_redirected_to items_url
+    assert_raises(ActiveRecord::InvalidForeignKey) do
       delete item_url(@item)
     end
-
-    assert_redirected_to items_url
   end
 end

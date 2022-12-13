@@ -2,8 +2,12 @@ require "test_helper"
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:one)
+    @user = users(:admin)
+    email = 'admin@gmail.com'
+    password = 'admin'
+    post login_control_path, params: { email: email, password: password }
   end
+  
 
   test "should get index" do
     get users_url
@@ -39,10 +43,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy user" do
-    assert_difference("User.count", -1) do
+    # assert_difference("User.count", -1) do
+    #   delete user_url(@user)
+    # end
+    # assert_redirected_to users_url
+    assert_raises(ActiveRecord::InvalidForeignKey) do
       delete user_url(@user)
     end
-
-    assert_redirected_to users_url
   end
 end

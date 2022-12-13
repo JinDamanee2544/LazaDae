@@ -1,13 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
-  item: one
-  price: 9.99
-  stock: 1
+# one:
+#   user: one
+#   item: one
+#   price: 9.99
+#   stock: 1
 
-two:
-  user: two
-  item: two
-  price: 9.99
+# two:
+#   user: two
+#   item: two
+#   price: 9.99
+#   stock: 1
+
+market1:
+  user: admin
+  item: water
+  price: 10
   stock: 1
