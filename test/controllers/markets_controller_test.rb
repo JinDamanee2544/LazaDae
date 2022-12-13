@@ -48,4 +48,18 @@ class MarketsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to markets_url
   end
+
+  test "should lock market" do
+    # Locking caused by another user that fetch the same record but it is not update on the other user yet
+    firstMarket = Market.find(@market.id)
+    laterMarket = Market.find(@market.id)
+
+    firstMarket.stock = 10
+    firstMarket.save
+
+    assert_raises(ActiveRecord::StaleObjectError) do
+      laterMarket.stock = 20
+      laterMarket.save
+    end
+  end
 end

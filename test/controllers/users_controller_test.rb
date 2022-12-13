@@ -51,4 +51,18 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       delete user_url(@user)
     end
   end
+
+  test "should lock user" do
+    # Locking caused by another user that fetch the same record but it is not update on the other user yet
+    firstUser = User.find(@user.id)
+    laterUser = User.find(@user.id)
+
+    firstUser.name = "Prayuth"
+    firstUser.save
+
+    assert_raises(ActiveRecord::StaleObjectError) do
+      laterUser.name = "Prawit"
+      laterUser.save
+    end
+  end
 end

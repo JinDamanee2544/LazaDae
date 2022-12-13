@@ -20,3 +20,4 @@ inventory1:
   seller: seller
   price: 10
   qty: 1
+  lock_version: 0

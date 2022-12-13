@@ -48,4 +48,18 @@ class InventoriesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to inventories_url
   end
+
+  test "should lock inventory" do
+    # Locking caused by another user that fetch the same record but it is not update on the other user yet
+    firstInventory = Inventory.find(@inventory.id)
+    laterInventory = Inventory.find(@inventory.id)
+
+    firstInventory.qty = 10
+    firstInventory.save
+
+    assert_raises(ActiveRecord::StaleObjectError) do
+      laterInventory.qty = 20
+      laterInventory.save
+    end
+  end
 end

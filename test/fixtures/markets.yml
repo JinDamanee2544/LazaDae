@@ -17,3 +17,4 @@ market1:
   item: water
   price: 10
   stock: 1
+  lock_version: 0

@@ -50,4 +50,18 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
       delete item_url(@item)
     end
   end
+
+  test "should lock item" do
+    # Locking caused by another user that fetch the same record but it is not update on the other user yet
+    firstItem = Item.find(@item.id)
+    laterItem = Item.find(@item.id)
+
+    firstItem.name = "NamSom"
+    firstItem.save
+
+    assert_raises(ActiveRecord::StaleObjectError) do
+      laterItem.name = "NamDang"
+      laterItem.save
+    end
+  end
 end
