@@ -16,23 +16,27 @@ class MyMarketController < ApplicationController
     def buyItem
         buyMarketItem = Market.find_by(item_id:params[:item_id])
         stock = buyMarketItem.stock
-        amount = params[:amount]
-        puts "------------------------"
-        puts "#{User.find(session[:current_user_id]).name} bought #{amount} of #{buyMarketItem.item.name}"
-        puts "------------------------"
-        if(stock>0)
-            @userInventory = Inventory.create(
-                user_id: session[:current_user_id],
-                item_id: buyMarketItem.item_id,
-                seller_id: buyMarketItem.user_id,
-                price: buyMarketItem.price,
-                qty: amount
-            )
-            buyMarketItem.update(stock: buyMarketItem.stock-1)
-            redirect_to my_market_path , notice: "You Bought #{Item.find(params[:item_id]).name} for #{amount}"
-        else
-            redirect_to my_market_path , notice: "Out of Stock"
+        amount = params[:amount].to_i
+        # puts "------------------------"
+        # puts "#{User.find(session[:current_user_id]).name} bought #{amount} of #{buyMarketItem.item.name}"
+        # puts "------------------------"
+
+        if(amount < 0)
+            return redirect_to my_market_path , notice: "Invalid Amount"
         end
 
+        if(amount > stock)
+            return redirect_to my_market_path , notice: "Not Enough Stock"
+        end    
+
+        @userInventory = Inventory.create(
+            user_id: session[:current_user_id],
+            item_id: buyMarketItem.item_id,
+            seller_id: buyMarketItem.user_id,
+            price: buyMarketItem.price,
+            qty: amount
+        )
+        buyMarketItem.update(stock: buyMarketItem.stock-amount)
+        redirect_to my_market_path , notice: "You Bought #{Item.find(params[:item_id]).name} for #{amount}"
     end
 end

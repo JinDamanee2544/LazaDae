@@ -16,5 +16,5 @@ market1:
   user: admin
   item: water
   price: 10
-  stock: 1
+  stock: 10
   lock_version: 0
