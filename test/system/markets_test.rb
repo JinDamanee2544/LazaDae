@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class MarketsTest < ApplicationSystemTestCase
   setup do
-    @market = markets(:one)
+    @market = markets(:market1)
   end
 
   test "visiting the index" do

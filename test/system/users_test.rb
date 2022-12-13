@@ -2,7 +2,10 @@ require "application_system_test_case"
 
 class UsersTest < ApplicationSystemTestCase
   setup do
-    @user = users(:one)
+    @user = users(:admin)
+    email = 'admin@gmail.com'
+    password = 'admin'
+    post login_control_path, params: { email: email, password: password }
   end
 
   test "visiting the index" do
