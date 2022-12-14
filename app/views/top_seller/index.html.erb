@@ -5,24 +5,28 @@
         <h1 class='text-center fw-bold p-5'>Top Seller</h1>
         <%= render 'top_seller/option'%>
       </div>
-      <div class='p-4'>
+      <div>
         <% if not @top_seller_item.nil? %>
-          <div  class='text-center mb-4'>
-            <h4> Sorted by Sold Item  </h4>
-            <label>
-              For <%= @start_date%> - <%= @end_date %>
-            </label>
+          <div class='p-4'>
+            <div class='text-center mb-4'>
+              <h4> Sorted by Sold Item  </h4>
+              <label>
+                For <%= @start_date%> - <%= @end_date %>
+              </label>
+            </div>
+            <%= render 'top_seller/topItem'%>
           </div>
-          <%= render 'top_seller/topItem'%>
         <% end %>
         <% if not @top_seller_price.nil? %>
-          <div  class='text-center mb-4'>
-            <h4> Sorted by Revenue </h4>
-            <label>
-              For <%= @start_date%> - <%= @end_date %>
+          <div class='p-4'>
+            <div  class='text-center mb-4'>
+              <h4> Sorted by Revenue </h4>
+              <label>
+                For <%= @start_date%> - <%= @end_date %>
+              </label>
+              <%= render 'top_seller/topPrice'%>
             </div>
-            <%= render 'top_seller/topPrice'%>
-          </label>
+          </div>
         <% end %>
       </div>
     </div>

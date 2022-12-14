@@ -21,3 +21,19 @@ inventory1:
   price: 10
   qty: 1
   lock_version: 0
+
+inventoryMostQty:
+  user: buyer
+  item: water
+  seller: admin
+  price: 10
+  qty: 1000
+  lock_version: 0
+
+inventoryMostPrice:
+  user: buyer
+  item: water
+  seller: seller
+  price: 100000
+  qty: 1
+  lock_version: 0

@@ -18,3 +18,17 @@ market1:
   price: 10
   stock: 10
   lock_version: 0
+
+marketBySeller:
+  user: seller
+  item: water
+  price: 10
+  stock: 10
+  lock_version: 0
+
+marketNotAllow:
+  user: admin
+  item: water
+  price: 10
+  stock: 10
+  lock_version: 0

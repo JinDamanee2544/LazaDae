@@ -10,5 +10,5 @@
     </div>
   <% end %>
   <%= link_to "New item", new_item_path ,class:'btn btn-success my-4'%>
-  <%= button_to "Delete Unused Items", delete_unused_item_path, method: :post, data: { confirm: "Are you sure?" },class:'btn btn-danger my-4'%>
+  <%= button_to "Enable All Items", enableAllItem_path, method: :post, data: { confirm: "Are you sure?" },class:'btn btn-warning my-4'%>
 </div>

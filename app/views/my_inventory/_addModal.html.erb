@@ -7,10 +7,9 @@
       </div>
       <div class="modal-body">
         <%= form_with url:my_inventory_add_item_path,method: :post,class:'d-flex gap-4 flex-column' do |f| %>
-          <%= f.hidden_field :lock_version %>
           <div class="form-group">
             <%= f.label :item_name, 'Item Name'  %>
-            <%= f.text_field :item_name,required:true, class:'form-control' %>
+            <%= f.text_field :item_name,required:true,class:'form-control' %>
           </div>
           <div class="form-group">
             <%= f.label :item_category, 'Item Category'  %>
@@ -22,11 +21,11 @@
           </div>
           <div class="form-group">
             <%= f.label :price, 'Price'  %>
-            <%= f.number_field :price,required:true, class:'form-control' %>
+            <%= f.number_field :price,required:true,min:1,value:1, class:'form-control' %>
           </div>
           <div class="form-group">
             <%= f.label :stock, 'Stock'  %>
-            <%= f.number_field :stock,required:true, class:'form-control' %>
+            <%= f.number_field :stock,required:true,min:1,value:1 ,class:'form-control' %>
           </div>
           <div class="form-group">
             <%= f.submit 'Add',class:'btn btn-primary' %>

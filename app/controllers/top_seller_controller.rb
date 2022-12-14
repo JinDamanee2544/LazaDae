@@ -1,4 +1,7 @@
 class TopSellerController < ApplicationController
+  before_action :must_be_log_in
+  before_action :must_be_seller
+  
   def index
     if(params[:start_date].present? && params[:end_date].present?)
       @start_date = params[:start_date]
@@ -8,12 +11,11 @@ class TopSellerController < ApplicationController
       end
       if(params[:metric]=="Sold Item")
         @top_seller_item = Inventory.where('created_at BETWEEN ? AND ?', @start_date, @end_date).group(:seller_id).select('seller_id, SUM(qty) as criteria').order('criteria desc')
-      else
+      elsif (params[:metric]=="Revenue")
         @top_seller_price = Inventory.where('created_at BETWEEN ? AND ?', @start_date, @end_date).group(:seller_id).select('seller_id, SUM(qty*price) as criteria').order('criteria desc')
+      else
+        return redirect_to top_seller_path , notice: "Invalid metric"
       end
-    else
-      # Default is all time top seller by sold item
-      # @top_seller_item = Inventory.group(:seller_id).select('seller_id, SUM(qty) as criteria').order('criteria desc')
     end
   end
 

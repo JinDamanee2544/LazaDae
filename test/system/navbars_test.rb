@@ -9,7 +9,10 @@ class NavbarsTest < ApplicationSystemTestCase
   setup do
     email = 'admin@gmail.com'
     password = 'admin'
-    post login_control_path, params: { email: email, password: password }
+    visit login_path
+    fill_in "email", with: email
+    fill_in "password", with: password
+    click_on "Login"
   end
 
   test "should see navbar" do

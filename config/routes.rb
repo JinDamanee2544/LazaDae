@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :items
   resources :users
 
-  post 'delete_unused_item' , to: 'items#delete_unused_item' , as: 'delete_unused_item'
+  # post 'delete_unused_item' , to: 'items#delete_unused_item' , as: 'delete_unused_item'
+  post 'enableAllItem' , to: 'items#enableAllItem' , as: 'enableAllItem'
   
   get 'login', to: 'login#index' , as: 'login'
   post 'login/control' , to: 'login#loginControl' , as: 'login_control'
