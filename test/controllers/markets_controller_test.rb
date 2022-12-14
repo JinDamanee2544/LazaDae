@@ -54,11 +54,11 @@ class MarketsControllerTest < ActionDispatch::IntegrationTest
     firstMarket = Market.find(@market.id)
     laterMarket = Market.find(@market.id)
 
-    firstMarket.stock = 10
+    firstMarket.stock = 100
     firstMarket.save
 
     assert_raises(ActiveRecord::StaleObjectError) do
-      laterMarket.stock = 20
+      laterMarket.stock = 200
       laterMarket.save
     end
   end
