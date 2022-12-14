@@ -51,6 +51,8 @@ gem "image_processing", "~> 1.2"
 # Jquery 
 gem "jquery-rails"
 
+# For running UNIX server
+gem 'webrick'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

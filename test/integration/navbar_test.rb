@@ -1,7 +1,7 @@
 require "test_helper"
 
 class NavbarTest < ActionDispatch::IntegrationTest
-  include ActionDispatch::IntegrationTest
+  # include ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

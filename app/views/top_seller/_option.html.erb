@@ -2,11 +2,11 @@
   <%= f.select :metric , ["Sold Item","Revenue"] ,{},{class:'form-control'}%>
   <div class="form-group">
     <%= f.label :start_date%>
-    <%= f.date_field :start_date ,required:true,class:'form-control'%>
+    <%= f.date_field :start_date ,required:true,value:Date.today-7,class:'form-control'%>
   </div>
   <div class="form-group">
     <%= f.label :end_date%>
-    <%= f.date_field :end_date ,required:true,class:'form-control'%>
+    <%= f.date_field :end_date ,required:true,value:Date.today,class:'form-control'%>
   </div>
-  <%= f.submit "Submit",class:'btn btn-primary'%>
+  <%= f.submit "Search",class:'btn btn-primary'%>
 <%end%>

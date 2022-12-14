@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-lazadae">
   <div class="container justify-content-between">
     <div class='container-fluid d-flex'>
-      <a class="navbar-brand fw-bold text-white d-flex gap-4" href="">
+      <label class="navbar-brand fw-bold text-white d-flex gap-4" href="">
         <img src="/lazadae.png" height='36' alt="logo">
         Lazadae
-      </a>
+      </label>
       <%# <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button> %>
@@ -45,22 +45,24 @@
       </ul>
       <%# </div> %>
     </div>
-    <ul class="navbar-nav">
-      <li class="nav-item dropdown">
-        <% if session[:current_user_id] %>
-          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= User.find(session[:current_user_id]).name%>
-          </a>
-        <% else %>
-          <label class='text-white mx-2'>Guest</label>
-        <% end %>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="/profile">Profile</a></li>
-          <li>
-            <%= button_to "Logout",logout_path ,method: :post ,class:'dropdown-item btn btn-link'%>
-          </li>
-        </ul>
-      </li>
-    </ul>
-    <img src="/user.png" height='36' alt="logo" class='mx-2'>
+    <div class='d-flex'>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <% if session[:current_user_id] %>
+            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= User.find(session[:current_user_id]).name%>
+            </a>
+          <% else %>
+            <label class='text-white mx-2'>Guest</label>
+          <% end %>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/profile">Profile</a></li>
+            <li>
+              <%= button_to "Logout",logout_path ,method: :post ,class:'dropdown-item btn btn-link'%>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <img src="/user.png" height='36' alt="logo" class='mx-2'>
+    </div>
   </nav>
