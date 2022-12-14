@@ -17,25 +17,26 @@
           </tr>
         </thead>
         <tbody>
-          <% @onlyEnableItemInMarket.each do |r| %>
+          <% @onlyEnableItemInMarket.each do |m| %>
             <tr>
               <td>
-                <% if(r.item.picture.attached?)%>
-                  <%= image_tag r.item.picture.variant(:thumb) %>
+                <% if(m.item.picture.attached?)%>
+                  <%= image_tag m.item.picture.variant(:thumb) %>
                 <% else %>
                   <p>No Picture</p>
                 <% end %>
               </td>
-              <td> <%= r.item.name %> </td>
-              <td> <%= r.item.category %></td>
-              <td> <%= r.price %> </td>
-              <td> <%= r.stock %> </td>
-              <td> <%= User.find(r.user_id).name %> </td>
+              <td> <%= m.item.name %> </td>
+              <td> <%= m.item.category %></td>
+              <td> <%= m.price %> </td>
+              <td> <%= m.stock %> </td>
+              <td> <%= User.find(m.user_id).name %> </td>
               <td>
                 <%= form_with url:my_market_buyItem_path,method: :post,class:'d-flex gap-2 input-small' do |f| %>
-                  <%= f.hidden_field :user_id ,value: r.user_id %>
+                  <%= f.hidden_field :market_id ,value: m.id %>
+                  <%= f.hidden_field :user_id ,value: m.user_id %>
+                  <%= f.hidden_field :item_id ,value: m.item_id %>
                   <%= f.number_field :amount ,required:true, value:1, class: 'form-control' %>
-                  <%= f.hidden_field :item_id ,value: r.item.id %>
                   <%= f.submit "Buy", class: "btn btn-primary" %>
                 <% end %>
               </td>

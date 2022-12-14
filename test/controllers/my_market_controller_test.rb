@@ -15,7 +15,7 @@ class MyMarketControllerTest < ActionDispatch::IntegrationTest
 
   test "Buy 1 Item" do
     assert_difference("Market.find(@market.id).stock",-1) do
-      post my_market_buyItem_path, params: { item_id: @market.item.id, amount: 1 }
+      post my_market_buyItem_path, params: { market_id: @market.id ,item_id: @market.item_id, amount: 1 }
     end
     assert_redirected_to(my_market_path)
     assert_equal("You Bought #{@market.item.name} for 1", flash[:notice])
@@ -23,15 +23,21 @@ class MyMarketControllerTest < ActionDispatch::IntegrationTest
 
   test "Buy 5 Item" do
     assert_difference("Market.find(@market.id).stock",-5) do
-      post my_market_buyItem_path, params: { item_id: @market.item.id, amount: 5 }
+      post my_market_buyItem_path, params: { market_id: @market.id ,item_id: @market.item_id, amount: 5 }
     end
     assert_redirected_to(my_market_path)
     assert_equal("You Bought #{@market.item.name} for 5", flash[:notice])
   end
 
+  test "Buy Item will increase Inventory" do
+    assert_difference("Inventory.count",1) do
+      post my_market_buyItem_path, params: { market_id: @market.id ,item_id: @market.item_id, amount: 1 }
+    end
+  end
+
   test "Buy Item with invalid amount" do
     assert_no_difference("Market.find(@market.id).stock") do
-      post my_market_buyItem_path, params: { item_id: @market.item.id, amount: -1 }
+      post my_market_buyItem_path, params: { market_id: @market.id ,item_id: @market.item_id, amount: -1 }
     end
     assert_redirected_to(my_market_path)
     assert_equal("Invalid Amount", flash[:notice])
@@ -39,7 +45,7 @@ class MyMarketControllerTest < ActionDispatch::IntegrationTest
 
   test "Buy Item more than stock" do
     assert_no_difference("Market.find(@market.id).stock") do
-      post my_market_buyItem_path, params: { item_id: @market.item.id, amount: 100 }
+      post my_market_buyItem_path, params: { market_id: @market.id ,item_id: @market.item_id, amount: 100 }
     end
     assert_redirected_to(my_market_path)
     assert_equal("Not Enough Stock", flash[:notice])
@@ -47,7 +53,7 @@ class MyMarketControllerTest < ActionDispatch::IntegrationTest
 
   test "Buy Item should increase lock_version" do
     assert_difference("Market.find(@market.id).lock_version",1) do
-      post my_market_buyItem_path, params: { item_id: @market.item.id, amount: 1 }
+      post my_market_buyItem_path, params: { market_id: @market.id ,item_id: @market.item_id, amount: 1 }
     end
   end
 end
