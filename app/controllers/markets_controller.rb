@@ -20,7 +20,7 @@ class MarketsController < ApplicationController
 
   # GET /markets/1/edit
   def edit
-    if(@market.user_id != session[:current_user_id])
+    if(session[:role]!='admin' and @market.user_id != session[:current_user_id])
       return redirect_to login_path, notice: "You are not allowed to edit this item."
     end
   end
@@ -42,7 +42,7 @@ class MarketsController < ApplicationController
 
   # PATCH/PUT /markets/1 or /markets/1.json
   def update
-    if(@market.user_id != session[:current_user_id])
+    if(session[:role]!='admin' and @market.user_id != session[:current_user_id])
       return redirect_to login_path, notice: "You are not allowed to edit this item."
     end
     respond_to do |format|
