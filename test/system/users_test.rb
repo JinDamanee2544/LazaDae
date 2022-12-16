@@ -3,16 +3,19 @@ require "application_system_test_case"
 class UsersTest < ApplicationSystemTestCase
   setup do
     @user = users(:admin)
+    visit '/login'
     email = 'admin@gmail.com'
     password = 'admin'
-    post login_control_path, params: { email: email, password: password }
+    fill_in "email", with: "email"
+    fill_in "password", with: "password"
+    click_on "login"
+    #post login_control_path, params: { email: email, password: password }
   end
 
   test "visiting the index" do
     visit users_url
     assert_selector "h1", text: "Users"
   end
-
   test "should create user" do
     visit users_url
     click_on "New user"
@@ -48,3 +51,4 @@ class UsersTest < ApplicationSystemTestCase
     assert_text "User was successfully destroyed"
   end
 end
+  
