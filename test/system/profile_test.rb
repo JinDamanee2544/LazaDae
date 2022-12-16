@@ -34,6 +34,9 @@ class ProfileTest < ApplicationSystemTestCase
         assert_selector "label", text: "Email"
         assert_selector "label", text: "Name"
         assert_selector "label", text: "Role"
+        assert_selector "a", text: "Inventory"
+        assert_selector "a", text: "Sale History"
+        assert_selector "a", text: "Top Seller"
     end
 
     test "should_show_profile_buyer" do
@@ -46,5 +49,7 @@ class ProfileTest < ApplicationSystemTestCase
         assert_selector "label", text: "Email"
         assert_selector "label", text: "Name"
         assert_selector "label", text: "Role"
+        assert_selector "a", text: "Market"
+        assert_selector "a", text: "Purchase History"
     end
 end

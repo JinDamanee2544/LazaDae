@@ -3,15 +3,19 @@ require "application_system_test_case"
 class MarketsTest < ApplicationSystemTestCase
   setup do
     @market = markets(:market1)
+    visit "/login"
+    fill_in "Email", with: users(:admin).email
+    fill_in "Password", with: "admin"
+    click_on("login")
   end
 
   test "visiting the index" do
-    visit markets_url
-    assert_selector "h1", text: "Markets"
+    visit "/my_market"
+    assert_selector "h1", text: "Market"
   end
 
   test "should create market" do
-    visit markets_url
+    visit "/my_market"
     click_on "New market"
 
     fill_in "Item", with: @market.item_id
@@ -39,7 +43,7 @@ class MarketsTest < ApplicationSystemTestCase
   end
 
   test "should destroy Market" do
-    visit market_url(@market)
+    visit "/my_market"
     click_on "Destroy this market", match: :first
 
     assert_text "Market was successfully destroyed"
