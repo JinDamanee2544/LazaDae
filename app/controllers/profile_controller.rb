@@ -1,6 +1,5 @@
 class ProfileController < ApplicationController
   def index
-    p session[:current_user_id]
     @user = User.find(session[:current_user_id])
   end
 

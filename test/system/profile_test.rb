@@ -12,22 +12,12 @@ class ProfileTest < ApplicationSystemTestCase
         click_on("login")
         assert_selector "h1", text: "Market"
         
-        visit "/profile"
-
+        click_on("Admin Guy")
+        click_on("Profile")
+        assert_selector "h1", text: "Profile"
         assert_selector "label", text: "Email"
         assert_selector "label", text: "Name"
         assert_selector "label", text: "Role"
-        assert_selector "a", text: "Market"
-        assert_selector "a", text: "Purchase History"
-        assert_selector "a", text: "Inventory"
-        assert_selector "a", text: "Sale History"
-        assert_selector "a", text: "Top Seller"
-        assert_selector "a", text: "Scaffold"
-
-        click_on("Admin Guy")
-        click_on("Logout")
-        assert_text "You have been logged out"
-        assert_selector "h1", text: "Login"
     
     end
 
@@ -37,18 +27,12 @@ class ProfileTest < ApplicationSystemTestCase
         click_on("login")
         assert_selector "h1", text: "Seller Guy's Shop Inventory"
         
-        visit "/profile"
+        click_on("Seller Guy")
+        click_on("Profile")
+        assert_selector "h1", text: "Profile"
         assert_selector "label", text: "Email"
         assert_selector "label", text: "Name"
         assert_selector "label", text: "Role"
-        assert_selector "a", text: "Inventory"
-        assert_selector "a", text: "Sale History"
-        assert_selector "a", text: "Top Seller"
-
-        click_on("Seller Guy")
-        click_on("Logout")
-        assert_text "You have been logged out"
-        assert_selector "h1", text: "Login"
     end
 
     test "should_show_profile_buyer" do
@@ -57,17 +41,12 @@ class ProfileTest < ApplicationSystemTestCase
         click_on("login")
         assert_selector "h1", text: "Market"
         
-        visit "/profile"
+        click_on("Buyer Guy")
+        click_on("Profile")
+        assert_selector "h1", text: "Profile"
         assert_selector "label", text: "Email"
         assert_selector "label", text: "Name"
         assert_selector "label", text: "Role"
-        assert_selector "a", text: "Market"
-        assert_selector "a", text: "Purchase History"
-
-        click_on("Buyer Guy")
-        click_on("Logout")
-        assert_text "You have been logged out"
-        assert_selector "h1", text: "Login"
 
     end
 end
