@@ -30,10 +30,10 @@ class NavbarsTest < ApplicationSystemTestCase
         click_on("Item")
         assert_selector "h1", text: "Items"
         click_on("Scaffold")
-        find("Inventory", match: :first).click
+        visit "/inventories"
         assert_selector "h1", text: "Inventories"
         click_on("Scaffold")
-        click_on("Market")
+        visit "/markets"
         assert_selector "h1", text: "Markets"
 
 
