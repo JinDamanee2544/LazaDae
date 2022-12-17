@@ -6,7 +6,7 @@ class MainTest < ApplicationSystemTestCase
         visit '/login'
     end
 
-    test "should_show_profile_admin" do
+    test "should_show_admin_link" do
         fill_in "Email", with: users(:admin).email
         fill_in "Password", with: "admin"
         click_on("login")
@@ -21,7 +21,7 @@ class MainTest < ApplicationSystemTestCase
     
     end
 
-    test "should_show_profile_seller" do
+    test "should_show_seller_link" do
         fill_in "Email", with: users(:seller).email
         fill_in "Password", with: "seller"
         click_on("login")
@@ -33,7 +33,7 @@ class MainTest < ApplicationSystemTestCase
 
     end
 
-    test "should_show_profile_buyer" do
+    test "should_show_buyer_link" do
         fill_in "Email", with: users(:buyer).email
         fill_in "Password", with: "buyer"
         click_on("login")
