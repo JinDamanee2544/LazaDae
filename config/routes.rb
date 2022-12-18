@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :items
   resources :users
 
+  get 'main' , to: 'main#index' , as: 'main'
+
   # post 'delete_unused_item' , to: 'items#delete_unused_item' , as: 'delete_unused_item'
   post 'enableAllItem' , to: 'items#enableAllItem' , as: 'enableAllItem'
   

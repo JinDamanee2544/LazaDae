@@ -6,8 +6,8 @@ class TopSellerTest < ApplicationSystemTestCase
         fill_in "Email", with: users(:seller).email
         fill_in "Password", with: "seller"
         click_on("login")
-        click_on("Top Seller")
-        assert_selector "h1", text: "Top Seller"
+        assert_selector "h1", text: "Main"
+        visit top_seller_path
     end
 
     test "should_show_sort_by_Revenue" do

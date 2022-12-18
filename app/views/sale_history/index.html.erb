@@ -31,7 +31,7 @@
               <td> <%= r.item.category %></td>
               <td> <%= r.price %> </td>
               <td> <%= r.qty %> </td>
-              <td> <%= User.find(r.user_id).name %> </td>
+              <td> <%= r.user.name %> </td>
             </tr>
           <% end %>
         </tbody>

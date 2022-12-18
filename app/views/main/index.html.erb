@@ -1,0 +1,25 @@
+<div class='container d-flex justify-content-center align-items-center'>
+  <main class='p-4 shadow-lg rounded bg-white'>
+    <h1 class='text-center fw-bold p-4 mx-5'>Main</h1>
+    <div class='d-flex flex-column gap-2' id='main-panel'>
+        <% if session[:role]=='buyer' or session[:role]=='admin'%>
+            <%= link_to 'my_market', my_market_path, class: 'btn btn-primary' %>
+            <%= link_to 'Purchase History', purchase_history_path, class: 'btn btn-primary' %>
+        <%end%>
+        <% if session[:role]=='seller' or session[:role]=='admin'%>
+            <%= link_to 'my_inventory', my_inventory_path, class: 'btn btn-primary' %>
+            <%= link_to 'Sale History', sale_history_path, class: 'btn btn-primary' %>
+            <%= link_to 'Top Seller', top_seller_path, class: 'btn btn-primary' %>
+        <%end%>
+        <% if session[:role]=='admin'%>
+            <div class='d-flex flex-column gap-2'>
+              <h3 class='text-center mt-4'>Scaffold</h3>
+              <%= link_to 'User', users_path, class: 'btn btn-primary' %>
+              <%= link_to 'Item', items_path, class: 'btn btn-primary' %>
+              <%= link_to 'Market', markets_path, class: 'btn btn-primary' %>
+              <%= link_to 'Inventory', inventories_path, class: 'btn btn-primary' %>
+            </div>
+        <%end%>
+    </div>
+  </main>
+</div>

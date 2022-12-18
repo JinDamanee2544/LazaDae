@@ -3,7 +3,7 @@
     <div class='container-fluid d-flex'>
       <label class="navbar-brand fw-bold text-white d-flex gap-4" href="">
         <img src="/lazadae.png" height='36' alt="logo">
-        Lazadae
+        <a class='nav-link ' href="/main">Lazadae</a>
       </label>
       <%# <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -30,7 +30,7 @@
           </li>
         <%end%>
         <% if session[:role]=='admin'%>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" id='dropdown-scaffold'>
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Scaffold
             </a>
