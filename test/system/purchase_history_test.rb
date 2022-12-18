@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class PurchaseHistoryTest < ApplicationSystemTestCase
     setup do
-        @inventory = inventories(:inventory1)
+        @inventory = inventories(:inventoryWinner)
         visit '/login'
         fill_in "Email", with: users(:buyer).email
         fill_in "Password", with: "buyer"

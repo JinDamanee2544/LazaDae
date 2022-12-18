@@ -22,18 +22,10 @@ inventory1:
   qty: 1
   lock_version: 0
 
-inventoryMostQty:
+inventoryWinner:
   user: buyer
   item: water
   seller: admin
-  price: 10
+  price: 100
   qty: 1000
-  lock_version: 0
-
-inventoryMostPrice:
-  user: buyer
-  item: water
-  seller: seller
-  price: 100000
-  qty: 1
   lock_version: 0
