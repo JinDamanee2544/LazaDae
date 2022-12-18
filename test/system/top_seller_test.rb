@@ -11,5 +11,12 @@ class TopSellerTest < ApplicationSystemTestCase
     test "should_show_sales_history" do
         click_on("Top Seller")
         assert_selector "h1", text: "Top Seller"
+        click_on("id=metric")
+        click_on("Sold Item")
+
+        within("id=metric") do
+            choose("Sold Item")
+        end
+        
     end
 end

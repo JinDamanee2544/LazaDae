@@ -11,7 +11,7 @@ class MarketTest < ApplicationSystemTestCase
 
     test "should create market" do
         click_on("Add Item to Market")
-        fill_in "Item Name", with: markets(:market1).item
+        fill_in "Item Name", with: items(:water).name
         fill_in "Item Category", with: items(:water).category
         fill_in "Price", with: markets(:market1).price
         fill_in "Stock", with: markets(:market1).stock
@@ -19,18 +19,11 @@ class MarketTest < ApplicationSystemTestCase
 
         assert_selector "h1", text: "Seller Guy's Shop Inventory"
         assert_text "Your item has been send to Market, Please wait for Admin to approve this :)"
+        assert_selector "th", text: "Name"
+        assert_selector "th", text: "Category"
+        assert_selector "th", text: "Price"
+        assert_selector "th", text: "Stock"
+        assert_selector "th", text: "Picture"
     
-    end
-
-    test "should update Market" do
-        click_on("Edit") match: :first
-    
-        fill_in "Item Name", with: markets(:market1).item
-        fill_in "User", with: markets(:market1).user
-        fill_in "Price", with: markets(:market1).price
-        fill_in "Stock", with: markets(:market1).stock
-        click_on "Update Market"
-    
-        assert_text "Your item on Market was successfully updated."
     end
 end
