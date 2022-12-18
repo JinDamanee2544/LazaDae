@@ -16,5 +16,9 @@ class MyInventoryTest < ApplicationSystemTestCase
         assert_selector "th", text: "Price"
         assert_selector "th", text: "Stock"
         assert_selector "th", text: "Picture"
+        assert_selector "td", text: "Water"
+        assert_selector "td", text: "Drink"
+        assert_selector "td", text: "10.0"
+        assert_selector "td", text: "10"
     end
 end

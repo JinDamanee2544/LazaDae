@@ -17,5 +17,10 @@ class SalesHistoryTest < ApplicationSystemTestCase
         assert_selector "th", text: "Picture"
         assert_selector "th", text: "Amount"
         assert_selector "th", text: "Buyer"
+        assert_selector "td", text: "Water"
+        assert_selector "td", text: "Drink"
+        assert_selector "td", text: "10.0"
+        assert_selector "td", text: "1"
+        assert_selector "td", text: "Admin Guy"
     end
 end

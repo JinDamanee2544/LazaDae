@@ -20,9 +20,13 @@ class MarketTest < ApplicationSystemTestCase
         assert_selector "h1", text: "Seller Guy's Shop Inventory"
         assert_text "Your item has been send to Market, Please wait for Admin to approve this :)"
         assert_selector "th", text: "Name"
+        assert_selector "td", text: "Water"
         assert_selector "th", text: "Category"
+        assert_selector "td", text: "Drink"
         assert_selector "th", text: "Price"
+        assert_selector "td", text: "10.0"
         assert_selector "th", text: "Stock"
+        assert_selector "td", text: "10"
         assert_selector "th", text: "Picture"
     
     end
