@@ -23,14 +23,14 @@ class NavbarsTest < ApplicationSystemTestCase
         click_on("Top Seller")
         assert_selector "h1", text: "Top Seller"
 
-        click_on("Scaffold")
+        click_on('Scaffold')
         click_on("User")
         assert_selector "h1", text: "Users"
         click_on("Scaffold")
         click_on("Item")
         assert_selector "h1", text: "Items"
         click_on("Scaffold")
-        visit "/inventories"
+        find("Scaffold").click_on("Inventory")
         assert_selector "h1", text: "Inventories"
         click_on("Scaffold")
         visit "/markets"
